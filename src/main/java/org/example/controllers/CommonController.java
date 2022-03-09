@@ -1,4 +1,4 @@
-package org.example.mappers.controllers;
+package org.example.controllers;
 
 import org.example.dto.CommonDto;
 import org.example.entities.AbstractEntity;

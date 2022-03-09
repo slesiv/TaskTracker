@@ -1,6 +1,6 @@
-package org.example.mappers.controllers.all;
+package org.example.controllers.all;
 
-import org.example.mappers.controllers.AbstractController;
+import org.example.controllers.AbstractController;
 import org.example.dto.all.RoleDto;
 import org.example.entities.all.Role;
 import org.example.services.all.RoleServiceImpl;

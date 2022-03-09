@@ -1,6 +1,6 @@
-package org.example.mappers.controllers.all;
+package org.example.controllers.all;
 
-import org.example.mappers.controllers.AbstractController;
+import org.example.controllers.AbstractController;
 import org.example.dto.all.StatusProjectDto;
 import org.example.entities.all.StatusProject;
 import org.example.services.all.StatusProjectService;
