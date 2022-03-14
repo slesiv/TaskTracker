@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-public abstract class AbstractController<E extends AbstractEntity, DTO extends CommonDto>
-        implements CommonController<E, DTO> {
+public abstract class AbstractController<E extends AbstractEntity, D extends CommonDto>
+        implements CommonController<E, D> {
 
-    private CommonService<E, DTO> service;
+    private CommonService<E, D> service;
 
-    public AbstractController(CommonService<E, DTO> service) {
+    public AbstractController(CommonService<E, D> service) {
         this.service = service;
     }
 
     @Override
-    public ResponseEntity<DTO> create(@RequestBody DTO entityDto) {
+    public ResponseEntity<D> create(@RequestBody D entityDto) {
         return ResponseEntity.ok(service.create(entityDto));
     }
 
@@ -30,12 +30,18 @@ public abstract class AbstractController<E extends AbstractEntity, DTO extends C
     }
 
     @Override
-    public ResponseEntity<List<DTO>> findAll() {
+    public ResponseEntity<List<D>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
 
     @Override
-    public ResponseEntity<DTO> update(DTO entityDto) {
+    public ResponseEntity<D> findById(String id) {
+        Long longId = Long.parseLong(id);
+        return ResponseEntity.ok(service.findByID(longId));
+    }
+
+    @Override
+    public ResponseEntity<D> update(D entityDto) {
         return ResponseEntity.ok(service.update(entityDto));
     }
 }

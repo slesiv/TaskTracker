@@ -9,30 +9,35 @@ import org.example.repositories.EntityRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class CommonServiceImpl<E extends AbstractEntity, DTO extends CommonDto>
-        implements CommonService<E, DTO> {
+public abstract class CommonServiceImpl<E extends AbstractEntity, D extends CommonDto>
+        implements CommonService<E, D> {
 
-    private EntityMapper<E, DTO> mapper;
+    private EntityMapper<E, D> mapper;
     private EntityRepository<E> repository;
 
-    public CommonServiceImpl(EntityMapper<E, DTO> mapper, EntityRepository<E> repository) {
+    public CommonServiceImpl(EntityMapper<E, D> mapper, EntityRepository<E> repository) {
         this.mapper = mapper;
         this.repository = repository;
     }
 
     @Override
-    public DTO create(DTO entityDto) {
+    public D create(D entityDto) {
         return mapper.toDto(
                 repository.save(
                     mapper.toEntity(entityDto)));
     }
 
     @Override
-    public List<DTO> findAll() {
+    public List<D> findAll() {
         return repository.findAll()
                 .stream()
                 .map(mapper::toDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public D findByID(Long id) {
+        return mapper.toDto(repository.findById(id).orElseThrow(() -> new GlobalExceptionHandler()));
     }
 
     @Override
@@ -44,7 +49,7 @@ public abstract class CommonServiceImpl<E extends AbstractEntity, DTO extends Co
 
     //TODO Надо закончить метод update()
     @Override
-    public DTO update(DTO entityDto) {
+    public D update(D entityDto) {
         return null;
     }
 }

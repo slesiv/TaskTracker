@@ -8,6 +8,7 @@ import java.util.List;
 public interface CommonService<E extends AbstractEntity, DTO extends CommonDto> {
     DTO create(DTO projectDto);
     List<DTO> findAll();
+    DTO findByID(Long id);
     void delete(Long id);
     DTO update(DTO projectDto);
 }
