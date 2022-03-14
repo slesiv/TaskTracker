@@ -2,7 +2,7 @@ package org.example.controllers;
 
 import org.example.dto.CommonDto;
 import org.example.entities.AbstractEntity;
-import org.example.services.EntityService;
+import org.example.services.CommonService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,9 +12,9 @@ import java.util.List;
 public abstract class AbstractController<E extends AbstractEntity, DTO extends CommonDto>
         implements CommonController<E, DTO> {
 
-    private EntityService<E, DTO> service;
+    private CommonService<E, DTO> service;
 
-    public AbstractController(EntityService<E, DTO> service) {
+    public AbstractController(CommonService<E, DTO> service) {
         this.service = service;
     }
 

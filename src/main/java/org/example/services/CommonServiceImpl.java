@@ -9,13 +9,13 @@ import org.example.repositories.EntityRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class AbstractServiceImpl<E extends AbstractEntity, DTO extends CommonDto>
-        implements EntityService<E, DTO> {
+public abstract class CommonServiceImpl<E extends AbstractEntity, DTO extends CommonDto>
+        implements CommonService<E, DTO> {
 
     private EntityMapper<E, DTO> mapper;
     private EntityRepository<E> repository;
 
-    public AbstractServiceImpl(EntityMapper<E, DTO> mapper, EntityRepository<E> repository) {
+    public CommonServiceImpl(EntityMapper<E, DTO> mapper, EntityRepository<E> repository) {
         this.mapper = mapper;
         this.repository = repository;
     }

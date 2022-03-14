@@ -5,7 +5,7 @@ import org.example.entities.AbstractEntity;
 
 import java.util.List;
 
-public interface EntityService<E extends AbstractEntity, DTO extends CommonDto> {
+public interface CommonService<E extends AbstractEntity, DTO extends CommonDto> {
     DTO create(DTO projectDto);
     List<DTO> findAll();
     void delete(Long id);
